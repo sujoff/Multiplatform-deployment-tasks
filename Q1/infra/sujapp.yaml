@@ -1,0 +1,64 @@
+---
+
+# DEPLOYMENT config
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: sujapp
+  template:
+    metadata:
+      labels:
+        app: sujapp
+    spec:
+      containers:
+      - name: sujapp
+        image: sspaudel/sujapp
+
+---
+
+# SERVICE config
+apiVersion: v1
+kind: Service
+metadata:
+  name: sujapp-srv
+spec:
+  type: NodePort
+  selector:
+   app: sujapp
+  ports:
+    - name: sujapp
+      port: 3000
+      targetPort: 3000
+
+---
+
+# INGRESS config
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sujapp-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - example.com
+    secretName: example-tls
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sujapp-srv
+            port: 
+              number: 3000
