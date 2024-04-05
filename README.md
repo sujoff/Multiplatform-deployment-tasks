@@ -1,1 +1,1 @@
-Readme has been updated for each Challenges above
+You can check project description for each challenges in relevent folder directory
