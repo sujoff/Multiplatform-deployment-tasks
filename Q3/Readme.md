@@ -1,3 +1,7 @@
+Challenge 3: Set up elk in docker and send logs from another container. Those logs should appear in Kibana.
+
+---
+
 ELK Stack with Java App Logging
 This repo demonstrates how to set up the ELK (Elasticsearch, Logstash, Kibana) stack using Docker and configure a Java application to send logs to it.
 
