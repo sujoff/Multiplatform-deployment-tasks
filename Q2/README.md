@@ -1,6 +1,4 @@
-Challenge 2: Write a deployment file and run the simple react static website on Kubernetes with 5 replicas.
-Host a simple static website as its domain name should be example.com using ingress and
-Nginx on Kubernetes.
+Challenge 2: Write a deployment file and run the simple react static website on Kubernetes with 5 replicas. Host a simple static website as its domain name should be example.com using ingress and Nginx on Kubernetes.
 
 ----
 # Deploying a Simple React Static Website on Kubernetes
