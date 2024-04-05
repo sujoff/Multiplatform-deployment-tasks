@@ -18,7 +18,7 @@ This project demonstrates how to deploy a React static website with 5 replicas o
    - If you don't have one, use `create-react-app` to generate a basic React project:
 
      ```bash
-     npx create-react-app my-react-app
+     npx create-react-app sujapp
      ```
 
    - Develop your React application's components and styles within the `src` directory.
@@ -28,7 +28,7 @@ This project demonstrates how to deploy a React static website with 5 replicas o
    - Navigate to your project directory:
 
      ```bash
-     cd my-react-app
+     cd sujapp
      ```
 
    - Build the production-optimized version of your React app:
@@ -77,16 +77,16 @@ This project demonstrates how to deploy a React static website with 5 replicas o
    - Build the Docker image:
 
      ```bash
-     docker build -t my-react-app:latest .
+     docker build -t sujapp:latest .
      ```
 
-     - Replace `my-react-app` with your desired image name if needed.
+     - Replace `sujapp` with your desired image name if needed.
 
    - Push the image to a Docker registry (e.g., Docker Hub) if you plan to deploy to a remote cluster:
 
      ```bash
      docker login  # Log in to your Docker registry
-     docker push my-react-app:latest
+     docker push sujapp:latest
      ```
 
 5. **Create Deployment YAML File**
@@ -97,20 +97,20 @@ This project demonstrates how to deploy a React static website with 5 replicas o
      apiVersion: apps/v1
      kind: Deployment
      metadata:
-       name: my-react-app
+       name: sujapp
      spec:
        replicas: 5  # Deploy 5 replicas of the application
        selector:
          matchLabels:
-           app: my-react-app
+           app: sujapp
        template:
          metadata:
            labels:
-             app: my-react-app
+             app: sujapp
          spec:
            containers:
-           - name: my-react-app
-             image: my-react-app:latest  # Replace with your image name/registry if needed
+           - name: sujapp
+             image: sujapp:latest  # Replace with your image name/registry if needed
              ports:
              - containerPort: 80
      ```
@@ -125,7 +125,7 @@ This project demonstrates how to deploy a React static website with 5 replicas o
      apiVersion: networking.k8s.io/v1
      kind: Ingress
      metadata:
-       name: my-react-app-ingress
+       name: sujapp-ingress
      spec:
        rules:  # Complete this section with your desired rules
                  # (e.g., hostname, path) for accessing the application
